@@ -11,7 +11,7 @@ class Solution {
                 }
             }
             if(flag==true){
-                count++;
+                ++count;
             }
         }
         return count;
