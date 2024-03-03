@@ -10,28 +10,46 @@
  */
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode newlist=reverse(head);
-        if(n==1)
-        return reverse(newlist.next);
-        ListNode curr=head;
-        for(curr=newlist; curr != null && n-1>1 ; curr=curr.next){
-            n--;
+        ListNode newlist=new ListNode(0);
+        newlist.next=head;
+        ListNode slow = newlist;
+        ListNode fast = newlist;
+        while(fast!=null && n-- >0){
+            fast=fast.next;
         }
-        curr.next=curr.next.next;
-        return reverse(newlist);
+        if(fast==null){
+            return head.next;
+        }
+        while(fast.next!=null){
+            fast=fast.next;
+            slow=slow.next;
+        }
+        slow.next=slow.next.next;
+        return newlist.next;
     }
 
-     public static ListNode reverse(ListNode head) {
-        ListNode temp = head;
-        ListNode prev = null;
-        ListNode front;
-        while (temp != null) {
-            front = temp.next;
-            temp.next = prev;
-            prev = temp;
-            temp = front;
-        }
-        return prev;
-
     }
-}
+    //     ListNode newlist=reverse(head);
+    //     if(n==1)
+    //     return reverse(newlist.next);
+    //     ListNode curr=head;
+    //     for(curr=newlist; curr != null && n-1>1 ; curr=curr.next){
+    //         n--;
+    //     }
+    //     curr.next=curr.next.next;
+    //     return reverse(newlist);
+    // }
+
+    //  public static ListNode reverse(ListNode head) {
+    //     ListNode temp = head;
+    //     ListNode prev = null;
+    //     ListNode front;
+    //     while (temp != null) {
+    //         front = temp.next;
+    //         temp.next = prev;
+    //         prev = temp;
+    //         temp = front;
+    //     }
+    //     return prev;
+
+    // }
