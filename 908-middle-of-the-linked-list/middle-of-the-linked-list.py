@@ -9,26 +9,10 @@ class Solution(object):
         :type head: Optional[ListNode]
         :rtype: Optional[ListNode]
         """
+        pointer1=head
+        pointer2=head
+        while pointer2 and pointer2.next:
+            pointer1=pointer1.next
+            pointer2=pointer2.next.next
+        return pointer1
         
-        def len():
-            current=head
-            count=0
-
-            while current:
-                count+=1
-                current=current.next
-            return count
-
-        current=head
-        m=len()//2+1
-        position=0
-        while current:
-            position+=1
-            if position is m:
-                return current 
-            current=current.next
-        
-
-        
-
-            
